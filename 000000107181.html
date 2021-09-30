@@ -44,8 +44,8 @@
         </div>
     </div>
 </header>
-<div class="op-contents-titile"></div>
-<span id="mark_page_name_tag" style="display: none;"></span>
+<div class="op-contents-titile">はじめに</div>
+<span id="mark_page_name_tag" style="display: none;">はじめに</span>
 <span id="mark_page_tree_tag" style="display: none;"></span>
 
     <main class="op-contents">
@@ -65,7 +65,7 @@
 </li>
 
 <li class="op-contents-tree-item d-open">
-    <div class="op-contents-tree-item-outer">
+    <div class="op-contents-tree-item-outer d-active">
         <div class="op-contents-tree-item-inner">
             <a href="000000107181.html" class="op-contents-tree-label d-icon-arrow-right" title="はじめに">
                 はじめに
@@ -1039,134 +1039,44 @@
             </ul>
         </nav>
         <div class="op-contents-right">
-            
-<article>
-    <div class="op-contents-body-container">
-        <div class="d-block"><h1 class="c-text-center"><p>“<span id="view_search_text"></span>”</p></h1></div>
-        <div class="op-search-container">
-            <div class="op-search">
-                <form method="get" action="search.html">
-                    <input id="search_text_inner" name="search_text" type="text" class="op-search-input" autocomplete="off">
-                    <button type="reset" class="op-search-input-reset d-visible"></button>
-                </form>
-            </div>
-        </div>
-        <div id="result-count" class="op-search-result-total"></div>
-        <div id="result-list" class="op-search-result-list"></div>
-        <div id="paging_list" class="op-search-function-group">
-        </div>
+            <article class="op-contents-body-container">
+    <div id="" class="d-block">
+        <h1><p>はじめに</p></h1>
+    </div>
+    <div >
+        
+<div class="d-block d-no-margin">
+    <div class="d-block-inner">
+        <p style="font-weight: normal">
+            本文作成用のパーツです。
+        </p>
+    </div>
+</div>
+<div class="d-block">
+    <h2><p>初任者のみなさまへ</p></h2>
+</div>
+<div class="d-block d-no-margin">
+    <div class="d-block-inner">
+        <p style="font-weight: normal">
+            本文作成用のパーツです。
+        </p>
+    </div>
+</div>
+<div class="d-block">
+    <h2><p>自立支援介護を実践しているかたへ</p></h2>
+</div>
+<div class="d-block d-no-margin">
+    <div class="d-block-inner">
+        <p style="font-weight: normal">
+            本文作成用のパーツです。
+        </p>
+    </div>
+</div>
+<div class="d-block">
+    <h2><p>施設職員のかたへ</p></h2>
+</div>
     </div>
 </article>
-<script type="text/javascript" src="theme/js/search.js"></script>
-<script type="text/javascript" src="index.json"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        var viewNum = 10;
-        var page = 1;
-        var startPage = 1;
-        var lastPage = 1;
-
-        var word = getParameter('search_text');
-        $('#search_text').val(word);
-        $('#search_text_inner').val(word);
-        $('#view_search_text').text(word);
-
-        if (getParameter('page') != null && !isNaN(Number(getParameter('page')))) {
-            page = Number(getParameter('page'));
-        }
-
-        var isResult = false;
-
-        if (word.length > 0) {
-
-            var result = getResult(word, SEARCH_INDEX.Index);
-
-            isResult = result.count > 0;
-
-            var start = 1 + ((page - 1) * viewNum);
-            var end = viewNum * page;
-            if (end > result.count) {
-                end = result.count;
-            }
-
-            lastPage = Math.ceil(result.count / viewNum);
-
-            if (result.count > 0) {
-                $('#result-count').text(start + '-' + end + ' / ' + result.count);
-            } else {
-                $('#result-count').text('0 - 0 / 0');
-            }
-
-            var viewList = result.data.slice(start - 1, end);
-
-            viewList.forEach(function (page) {
-                var page_div = $('<div class="op-search-result-list-item"></div>');
-                var list_body_div = $('<div class="op-search-result-body"></div>');
-                var list_title_div = $('<div class="op-search-result-title"></div>');
-                var page_name_div = $('<div class="op-search-result-page-name"></div>');
-                var page_link = $('<a href="' + page.FileName + '"></a>').text(page.Name);
-                page_name_div.append(page_link);
-                var page_tree_div = $('<div class="op-search-result-page-pass"></div>').html(page.PageTree);
-                list_title_div.append(page_name_div);
-                list_title_div.append(page_tree_div);
-                var page_body_div = $('<div class="op-search-result-content"></div>').html(page.Text);
-                list_body_div.append(list_title_div);
-                list_body_div.append(page_body_div);
-                var outer_link = $('<a href="' + page.FileName + '" class="op-search-result-arrow"></a>');
-                page_div.append(list_body_div);
-                page_div.append(outer_link);
-                $('#result-list').append(page_div);
-            });
-        } else {
-            $('#result-count').text('0 - 0 / 0');
-        }
-
-        if (isResult) {
-            var first_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-first">1</a>');
-            var prev_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-prev"></a>');
-            var current_page = $('<span class="op-search-function-page-no">' + page + '</span>');
-            var next_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-next"></a>');
-            var last_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-last">'+ lastPage + '</a>');
-            if (page === startPage) {
-                first_page_anchor.addClass('d-disabled');
-                prev_page_anchor.addClass('d-disabled');
-            } else {
-                first_page_anchor.attr('href', '?search_text=' + encodeURI(word) + '&page=' + startPage);
-                prev_page_anchor.attr('href', '?search_text=' + encodeURI(word) + '&page=' + (page - 1));
-            }
-            if (page === lastPage) {
-                next_page_anchor.addClass('d-disabled');
-                last_page_anchor.addClass('d-disabled');
-            } else {
-                next_page_anchor.attr('href', '?search_text=' + encodeURI(word) + '&page=' + (page + 1));
-                last_page_anchor.attr('href', '?search_text=' + encodeURI(word) + '&page=' + (lastPage));
-            }
-            $('#paging_list').append(first_page_anchor);
-            $('#paging_list').append(prev_page_anchor);
-            $('#paging_list').append(current_page);
-            $('#paging_list').append(next_page_anchor);
-            $('#paging_list').append(last_page_anchor);
-        } else {
-            var first_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-first">1</a>');
-            var prev_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-prev"></a>');
-            var current_page = $('<span class="op-search-function-page-no">1</span>');
-            var next_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-next"></a>');
-            var last_page_anchor = $('<a href="javascript:void(0)" class="op-search-function-btn op-btn-last">1</a>');
-            first_page_anchor.addClass('d-disabled');
-            prev_page_anchor.addClass('d-disabled');
-            next_page_anchor.addClass('d-disabled');
-            last_page_anchor.addClass('d-disabled');
-            $('#paging_list').append(first_page_anchor);
-            $('#paging_list').append(prev_page_anchor);
-            $('#paging_list').append(current_page);
-            $('#paging_list').append(next_page_anchor);
-            $('#paging_list').append(last_page_anchor);
-        }
-    });
-</script>
-
             
 <footer class="op-footer-container">
     <div class="op-footer-copyright">
